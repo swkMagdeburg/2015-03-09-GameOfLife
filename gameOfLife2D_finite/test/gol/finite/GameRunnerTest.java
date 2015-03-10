@@ -1,5 +1,9 @@
 package gol.finite;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,15 +21,25 @@ public class GameRunnerTest {
 	}
 
 	@Test
-	public void testExample() throws Exception {
-		System.out.println("\n testExample");
-		classUnderTest.createGameFromFile("gameSetUp4x8.txt", 5);
+	public void test4x8() throws Exception {
+		System.out.println("\n test4x8");
+		classUnderTest.runGameFromFile("game4x8_setUp.txt", 1);
+		
+		List<String> expected = classUnderTest.readLines("game4x8_2ndGen.txt");
+		List<String> result = classUnderTest.readResultingLines();
+		
+		assertEquals(expected, result);
 	}
 	
 	@Test
 	public void testFirstLineDead() throws Exception {
 		System.out.println("\n testFirstLineDead");
-		classUnderTest.createGameFromFile("gameSetUp4x8_firstLineDead.txt", 5);
+		classUnderTest.runGameFromFile("gameFirstLineDead_setUp.txt", 1);
+		
+		List<String> expected = classUnderTest.readLines("gameFirstLineDead_2ndGen.txt");
+		List<String> result = classUnderTest.readResultingLines();
+		
+		assertEquals(expected, result);
 	}
 
 }
